@@ -11,17 +11,14 @@ import logoImg from '../../assets/logo.svg'
 export default function Logon () {
 
   const [id, setId] = useState('')
-  const history = useHistory
+  const history = useHistory()
 
   async function handleLogin(event) {
     event.preventDefault()
 
     try {
-      const response = await api.post('session', {
-        headers: {
-          Authorization: id
-        }
-      })
+      
+      const response = await api.post('session',{ id })
 
       localStorage.setItem('ongId', id)
       localStorage.setItem('ongName', response.data.name)
